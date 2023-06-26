@@ -1,7 +1,8 @@
 nav {
     display: flex;
     align-items: center;
-    padding-block: 3vh;
+    height: 12vh;
+    border-bottom: 1px solid hsl(220, 14%, 75%);
 }
 
 .logo {
@@ -14,11 +15,34 @@ nav {
     margin-right: 2vw;
 }
 
+
 .nav-items {
     display: flex;
     align-items: center;
     gap: 2vw;
+    height: 100%;
 }
+
+.nav-items a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.nav-items a:hover {
+    cursor: pointer;
+}
+
+.nav-items a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background-color: hsl(26, 100%, 55%);
+} 
 
 .nav-items-back {
     display: none;
@@ -32,18 +56,31 @@ nav {
 }
 
 .cart {
+    color: hsl(220, 14%, 75%);
     margin-left: auto;
     margin-right: 2vw;
+}
+
+.cart:hover {
+    cursor: pointer;
+    color: hsl(220, 13%, 13%);
 }
 
 .avatar {
     width: 50px;
 }
 
+.avatar:hover {
+    cursor: pointer;
+    border: 2px solid hsl(26, 100%, 55%);
+    border-radius: 50px;
+}
+
 @media screen and (max-width: 950px) {
     nav {
         padding: 3%;
         padding-inline: 5%;
+        border-bottom: none;
     }
     .menu-btn {
         display: block;
@@ -75,18 +112,25 @@ nav {
     }
 
     .nav-items-back {
-        z-index: 0;
         display: block;
+        z-index: 0;
+        transform: translateX(-100vw);
     }
 
     .nav-items-back.opened {
         z-index: 1;
-        transition: 0.3s ease-in-out;
+        transition: 0.5s ease-in-out;
         opacity: 1;
+        transform: none
     }
 
     .nav-items a {
         font-weight: 700;
+        height: auto;
+    }
+
+    .nav-items a:hover::after  {
+        display: none;
     }
 
     .nav-items.opened {

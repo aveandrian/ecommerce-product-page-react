@@ -3,18 +3,28 @@ import './App.css'
 import Navbar from './components/Navbar'
 import productData from './productData.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faXmark, faPlus, faMinus, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import {useMediaQuery} from 'react-responsive'
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [lightboxModalOpen, setLightboxModalOpen] = useState(false)
+  const [countItem, setCountItem] = useState(0)
 
   const isMobile = useMediaQuery({ query: '(max-width: 950px)' })
 
-  console.log(isMobile)
   function toggleLightboxModalOpen(){
     setLightboxModalOpen(prev => !prev)
+  }
+
+  function handleRemoveItem(){
+    if(countItem == 0)
+      return
+    setCountItem(prev => prev-1)
+  }
+
+  function handleAddItem(){
+    setCountItem(prev => prev+1)
   }
 
   function prev(){
@@ -55,9 +65,19 @@ function App() {
           <h1 className='title'>{productData.name}</h1>
           <p className='decription'>{productData.description}</p>
           <div className='price-container'>
-            <p className='price'>${productData.discount ? productData.price * productData.discount : productData.price}</p>
-            {productData.discount && <span className='discount'>{productData.discount*100}%</span>}
-            {productData.discount && <p className='old-price'>${productData.price}</p>}
+            <div className='price-wrapper'>
+              <p className='price'>${productData.discount ? parseFloat(productData.price * productData.discount).toFixed(2) : productData.price}</p>
+              {productData.discount && <span className='discount'>{productData.discount*100}%</span>}
+            </div>
+            {productData.discount && <p className='old-price'>${parseFloat(productData.price).toFixed(2)}</p>}
+          </div>
+          <div className='add-to-cart'>
+            <div className='amount-container'>
+              <FontAwesomeIcon icon={faMinus}   className='remove-item' src='/images/icon-minus.svg' onClick={handleRemoveItem} />
+              <p className='count-item'>{countItem}</p>
+              <FontAwesomeIcon icon={faPlus}  className='add-item' src='/images/icon-plus.svg' onClick={handleAddItem} />
+            </div>
+            <button className='add-to-cart-btn'><FontAwesomeIcon icon={faCartShopping}/>Add to cart</button>
           </div>
         </div>
       </main>
@@ -77,33 +97,6 @@ function App() {
           </div>
         </div>
       )}
-      
-
-      
-
-      
-
-      $125.00
-      50%
-      $250.00
-
-      0
-      Add to cart
-
-      Sneaker Company
-
-      Fall Limited Edition Sneakers
-
-      These low-profile sneakers are your perfect casual wear companion. Featuring a 
-      durable rubber outer sole, they’ll withstand everything the weather can offer.
-
-      $125.00
-      50%
-      $250.00
-
-      0
-      Add to cart
-
       <div className="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
         Coded by <a href="https://github.com/aveandrian">aveandrian</a>.
