@@ -46,6 +46,11 @@ main {
   height: 6.25rem;
 }
 
+.thumbnail-container:hover img {
+  cursor: pointer;
+  filter: opacity(0.5)
+}
+
 .thumbnail-container img {
   width: 100%;
 }
@@ -226,13 +231,18 @@ main {
   height: 100%;
 }
 
+.remove-item, .add-item {
+  color: hsl(26, 100%, 55%);
+}
+
 .icon-container:hover {
   cursor: pointer;
 }
 
-.remove-item, .add-item {
-  color: hsl(26, 100%, 55%);
+.icon-container:hover .remove-item, .icon-container:hover .add-item  {
+  color: hsla(26, 100%, 55%, 0.5);
 }
+
 
 .count-item {
   font-size: 0.8rem;
