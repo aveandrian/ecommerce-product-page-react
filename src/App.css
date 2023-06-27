@@ -17,18 +17,18 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 30px;
-  gap: 100px;
+  padding: 1.875rem;
+  gap: 6.25rem;
 }
 
 .image-section {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
 .main-img, .thumbnail-container {
-  border-radius: 10px;
+  border-radius: 0.625rem;
 }
 
 .main-img {
@@ -42,8 +42,8 @@ main {
 
 .thumbnail-container {
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 6.25rem;
+  height: 6.25rem;
 }
 
 .thumbnail-container img {
@@ -51,7 +51,7 @@ main {
 }
 
 .thumbnail-container.selected {
-  border: 3px solid hsl(26, 100%, 55%);
+  border: 0.188rem solid hsl(26, 100%, 55%);
   background-color: white;
 }
 
@@ -65,11 +65,12 @@ main {
 
 
 .modal-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
@@ -79,10 +80,9 @@ main {
 .modal-content {
   display: flex;
   flex-direction: column;
-  
-  gap: 30px;
-  width: 500px;
-  height: 80vh;
+  gap: 1.25rem;
+  width: 31.25rem;
+  /* height: 100; */
 }
 
 .close-modal {
@@ -91,6 +91,7 @@ main {
 }
 
 .main-img-wrapper {
+  width: 100%;
   position: relative;
 }
 
@@ -101,8 +102,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   border-radius: 50%;
 }
 
@@ -149,7 +150,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
 .brand {
@@ -184,8 +185,8 @@ main {
 }
 
 .discount {
-  padding-inline: 5px;
-  border-radius: 5px;
+  padding-inline: 0.313rem;
+  border-radius: 0.313rem;
   font-size: 0.8rem;
   font-weight: 700;
   background-color: hsl(25, 100%, 94%);
@@ -211,9 +212,9 @@ main {
   align-items: center;
   justify-content: space-between;
   width: 30%;
-  height: 50px;
-  padding-inline: 20px;
-  border-radius: 10px;
+  height: 3.125rem;
+  padding-inline: 1.25rem;
+  border-radius: 0.625rem;
   gap: 1vw;
   background-color: hsl(223, 64%, 98%);
 }
@@ -222,23 +223,32 @@ main {
   color: hsl(26, 100%, 55%);
 }
 
+.remove-item:hover, .add-item:hover {
+  cursor: pointer;
+}
+
 .count-item {
   font-size: 0.8rem;
   font-weight: 700;
 }
 
 .add-to-cart-btn {
-  height: 50px;
+  height: 3.125rem;
   width: 65%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: none;
   color: white;
   background-color: hsl(26, 100%, 55%);
-  box-shadow: 0 20px 20px 0 hsla(26, 100%, 55%, 0.2);
+  box-shadow: 0 1.25rem 1.25rem 0 hsla(26, 100%, 55%, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
+}
+
+.add-to-cart-btn:hover {
+  cursor: pointer;
+  background-color: hsla(26, 100%, 55%, 0.6);
 }
 
 .attribution, .attribution a {
@@ -247,17 +257,17 @@ main {
   font-size: 0.8rem;
 }
 
-@media screen and (max-width: 1230px) {
+@media screen and (max-width: 76.875rem) {
   .add-to-cart {
     flex-direction: column;
-    gap: 10px
+    gap: 0.625rem
   }
   .amount-container, .add-to-cart-btn {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 60rem) {
   #root {
     padding: 0;
   }
@@ -268,19 +278,19 @@ main {
     padding-top: 0;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 1.25rem;
     padding-inline: 0;
   }
 
   .product-description {
-    padding-inline: 30px;
+    padding-inline: 1.875rem;
   }
 
   .prev-img-container, .next-img-container {
     transform: none;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   .prev-img-container {
     left: 4vw

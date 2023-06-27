@@ -10,6 +10,7 @@ function App() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [lightboxModalOpen, setLightboxModalOpen] = useState(false)
   const [countItem, setCountItem] = useState(0)
+  const [cartItems, setCartItems] = useState([])
 
   const isMobile = useMediaQuery({ query: '(max-width: 950px)' })
 
@@ -35,9 +36,36 @@ function App() {
     setSelectedIndex(prev => prev+1)
   }
 
+  function addItemToCart(){
+    if(countItem < 1)
+      return;
+
+    setCartItems(prev => {
+      let productFound = false
+      let tempArr = prev.map(item => {
+        if(item.id == productData.id){
+          productFound=true; 
+          return {...item, amount: item.amount + countItem } 
+        }
+        else return item
+      })
+      return productFound ? tempArr : [...prev, {
+        id: productData.id,
+        image: productData.images[0].thumbnail,
+        name: productData.name,
+        price: productData.discount ? parseFloat(productData.price * productData.discount).toFixed(2) : productData.price.toFixed(2),
+        amount: countItem
+      }]
+    })
+  }
+
+  function removeItemFromCart(id){
+    setCartItems(prev => prev.filter(item => item.id != id))
+  }
+
   return (
     <>
-      <Navbar />
+      <Navbar cartItems={cartItems} removeItemFromCart={removeItemFromCart}/>
       <div className='main-divider'></div>
       <main>
         {isMobile 
@@ -45,7 +73,7 @@ function App() {
           <>
             <div className='image-carousel'>
               <div className='images-container' style={{transform: `translateX(-${selectedIndex * 100}%)`}}>
-                {productData.images.map(image => <div className='carousel-item'><img className='carousel-item-img' src={image.main}></img></div>)}
+                {productData.images.map((image, i) => <div key={i} className='carousel-item'><img className='carousel-item-img' src={image.main}></img></div>)}
               </div>
               {selectedIndex != 0 && <div onClick={prev} className='prev-img-container'><img src='/images/icon-previous.svg' className='prev-img'/></div>}
               {selectedIndex < productData.images.length - 1  && <div onClick={next} className='next-img-container'><img src='/images/icon-next.svg' className='next-img'/></div>}
@@ -77,7 +105,7 @@ function App() {
               <p className='count-item'>{countItem}</p>
               <FontAwesomeIcon icon={faPlus}  className='add-item' src='/images/icon-plus.svg' onClick={handleAddItem} />
             </div>
-            <button className='add-to-cart-btn'><FontAwesomeIcon icon={faCartShopping}/>Add to cart</button>
+            <button className='add-to-cart-btn' onClick={addItemToCart}><FontAwesomeIcon icon={faCartShopping}/>Add to cart</button>
           </div>
         </div>
       </main>
