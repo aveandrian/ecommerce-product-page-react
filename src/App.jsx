@@ -101,9 +101,13 @@ function App() {
           </div>
           <div className='add-to-cart'>
             <div className='amount-container'>
-              <FontAwesomeIcon icon={faMinus}   className='remove-item' src='/images/icon-minus.svg' onClick={handleRemoveItem} />
+              <div className='icon-container' onClick={handleRemoveItem}>
+                <FontAwesomeIcon icon={faMinus}   className='remove-item' src='/images/icon-minus.svg'  />
+              </div>
               <p className='count-item'>{countItem}</p>
-              <FontAwesomeIcon icon={faPlus}  className='add-item' src='/images/icon-plus.svg' onClick={handleAddItem} />
+              <div className='icon-container' onClick={handleAddItem}>
+                <FontAwesomeIcon icon={faPlus}  className='add-item' src='/images/icon-plus.svg'  />
+              </div>
             </div>
             <button className='add-to-cart-btn' onClick={addItemToCart}><FontAwesomeIcon icon={faCartShopping}/>Add to cart</button>
           </div>

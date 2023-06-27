@@ -204,7 +204,7 @@ main {
 .add-to-cart {
   display: flex;
   align-items: center;
-  gap: 2vw
+  gap: 1.5vw
 }
 
 .amount-container {
@@ -213,18 +213,25 @@ main {
   justify-content: space-between;
   width: 30%;
   height: 3.125rem;
-  padding-inline: 1.25rem;
   border-radius: 0.625rem;
   gap: 1vw;
   background-color: hsl(223, 64%, 98%);
 }
 
-.remove-item, .add-item {
-  color: hsl(26, 100%, 55%);
+.icon-container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.remove-item:hover, .add-item:hover {
+.icon-container:hover {
   cursor: pointer;
+}
+
+.remove-item, .add-item {
+  color: hsl(26, 100%, 55%);
 }
 
 .count-item {
@@ -280,6 +287,10 @@ main {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     padding-inline: 0;
+  }
+
+  .icon-container {
+    width: 20%;
   }
 
   .product-description {
