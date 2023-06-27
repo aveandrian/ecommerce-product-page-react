@@ -23,4 +23,4 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![image](https://github.com/aveandrian/ecommerce-product-page-react/assets/13519212/04aebb18-fffe-4b53-936f-f6fb92442dbb)
