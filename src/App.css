@@ -35,6 +35,10 @@ main {
   width: 100%;
 }
 
+.main-img:hover {
+  cursor: pointer;
+}
+
 .preview-imgs {
   display: flex;
   justify-content: space-between;
